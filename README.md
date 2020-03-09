@@ -151,7 +151,7 @@ Launch *jsqsh*<br>
 * -O sslTrustStoreLocation= The qualified pathname of the Java keystore file 
 * -O sslTrustStorePassword= The password protecting Java keystore
 <br>
-Quick test that connection is active<br>
+Quick test that the SSL connection is working.<br>
 
 > select * from syscat.tables;<br>
 > create hadoop table x (x int);<br>
