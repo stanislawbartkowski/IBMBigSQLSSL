@@ -84,5 +84,21 @@ Certificates found
 -	bigsql
 
 ```
+## Enable BigSQL for SSL connection
+>db2 update dbm cfg using SSL_SVR_KEYDB /etc/bigsql/security/bigsql.kdb<br>
+>db2 update dbm cfg using SSL_SVR_STASH /etc/bigsql/security/bigsql.sth<br>
+>db2 update dbm cfg using SSL_SVR_LABEL bigsql<br>
+>db2 update dbm cfg using SSL_SVCENAME 32052<br>
 
+Several remarks
+* Use full path names for key database and stash files.
+* Decide on secure port connection, here 32502. Avoid using standard SSL ports like: 8443, 443 etc.
+Enable SSL<br>
+Keep both, secure and non-secure connections active.
+> db2set DB2COMM=SSL,TCPIP<br>
 
+Only SSL connection available, disable non-secure.
+>db2set DB2COMM=SSL<br>
+## Restart BigSQL 
+> bigsql stop<br>
+> bigsql start<br>
