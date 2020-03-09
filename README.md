@@ -87,6 +87,11 @@ Certificates found
 -	bigsql
 
 ```
+### BigSQL workers
+Distribute *bigsql.kdb* and *bigsql.sth* across BigSQL Worker nodes<br>
+> scp /etc/bigsql/security/bigsql.kdb <worker hostname>:/etc/bigsql/security/<br>
+> scp /etc/bigsql/security/bigsql.sth <worker hostname>:/etc/bigsql/security/<br>
+
 ## Enable BigSQL for SSL connection
 >db2 update dbm cfg using SSL_SVR_KEYDB /etc/bigsql/security/bigsql.kdb<br>
 >db2 update dbm cfg using SSL_SVR_STASH /etc/bigsql/security/bigsql.sth<br>
@@ -126,3 +131,6 @@ Server certificate
 -----BEGIN CERTIFICATE-----
 ............
 ```
+# SSL client enablement
+## jsqsh client
+
