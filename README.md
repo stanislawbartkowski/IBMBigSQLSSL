@@ -131,6 +131,24 @@ Server certificate
 -----BEGIN CERTIFICATE-----
 ............
 ```
+## Extract the certificate to be picked-up by the client software
+> gsk8capicmd_64 -cert -extract -db bigsql.kdb  -label bigsql -target /tmp/bigsql.arm -format ascii -fips -stashed<br>
+
 # SSL client enablement
 ## jsqsh client
+Use Java *keytool* to create keystore to be used by *jsqsh* utility or add to already existing keystore. The password here is used to protect Java keystore, it is not the password to get access to BigSQL key database.<br>
+> keytool -import -file /etc/bigsql/security/bigsql.arm -keystore server.jks<br>
 
+Launch *jsqsh*<br>
+> jsqsh<br>
+> 1> \connect -Ubigsql -Pbigsql -S aa1.fyre.ibm.com -p 32052 -ddb2 -Dbigsql -O sslConnection=true -O sslTrustStoreLocation=/home/bigsql/server.jks -O sslTrustStorePassword=secret<br>
+<br>
+* -Ubigsql The BigSQL user used to conect
+* -Pbigsql The BigSQL user password
+* -S aa1.fyre.ibm.com BigSQL Head node hostname
+* -p 32052 The SSL secure port
+* -O sslTrustStoreLocation= The qualified pathname of  Java keystore file 
+* -O sslTrustStorePassword= The password protecting Java keystore
+<br>
+Simple test that connection is active<br>
+>  1> select * from syscat.tables;
