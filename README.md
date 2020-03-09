@@ -52,10 +52,12 @@ Certificates found
 ```
 # Create a certificate signed by CA authority.
 If more trusted connectivity is required then instead of self-signed certificate the CA signed certificate is necessary.<br>
-Create Certificate Signing Reqeust (csr). The same key database is used for certficate and CSR requests.<br>
+Create Certificate Signing Reqeust (csr). The same key database is used for certficates and CSR requests.<br>
 > gsk8capicmd_64 -certreq -create -dn "CN=aa1.fyre.ibm.com,O=myBIGSQL,OU=FYRE,L=H,ST=MZ,C=WAW" -db bigsql.kdb -label bigsql -file bigsql.csr -stashed<br>
-The *bogsql.csr* file should be created.<br>
+
+The *bigsql.csr* file should be created.<br>
 Verify the content key database regarding CSR entries.<br>
+
 >   gsk8capicmd_64 -certreq  -list  -db bigsql.kdb -stashed<br>
 ```
 Certificates requests found
