@@ -143,6 +143,9 @@ Launch *jsqsh*<br>
 > jsqsh<br>
 > 1> \connect -Ubigsql -Pbigsql -S aa1.fyre.ibm.com -p 32052 -ddb2 -Dbigsql -O sslConnection=true -O sslTrustStoreLocation=/home/bigsql/server.jks -O sslTrustStorePassword=secret<br>
 <br>
+Directly using jsqsh command line parameters<br>
+>jsqsh -ddb2  -O sslConnection=true -O sslTrustStoreLocation=/home/bigsql/server.jks -O sslTrustStorePassword=secret -S aa1 -p 32052 -Ubigsql -Dbigsql<br>
+
 
 * -Ubigsql The BigSQL user to connect
 * -Pbigsql The BigSQL user password
