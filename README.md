@@ -73,6 +73,7 @@ Add root CA and BigSQL signed certificates to the key dataabase. Pay attention t
 > gsk8capicmd_64 -cert -receive -db bigsql.kdb -file /tmp/aa1.fyre.ibm.com.cert.pem -stashed<br>
 <br>
 Verify the current content of key database.<br>
+
 > gsk8capicmd_64 -cert  -list  -db bigsql.kdb -stashed<br>
 
 ```
