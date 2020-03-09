@@ -102,3 +102,23 @@ Only SSL connection available, disable non-secure.
 ## Restart BigSQL 
 > bigsql stop<br>
 > bigsql start<br>
+Verify that BigSQL secure port is enabled<br>
+```
+> openssl s_client -connect aa1.fyre.ibm.com:32052<br>
+```
+CONNECTED(00000003)
+depth=2 C = PL, ST = Mazovia, L = Warsaw, O = MyHome, OU = MyRoom, CN = thinkde.sb.com
+verify error:num=19:self signed certificate in certificate chain
+---
+Certificate chain
+ 0 s:/C=WAW/ST=MZ/L=H/O=myBIGSQL/OU=FYRE/CN=aa1.fyre.ibm.com
+   i:/C=PL/ST=Mazovia/O=MyHome/OU=IntermediateRoom/CN=thinkde.sb.com
+ 1 s:/C=PL/ST=Mazovia/O=MyHome/OU=IntermediateRoom/CN=thinkde.sb.com
+   i:/C=PL/ST=Mazovia/L=Warsaw/O=MyHome/OU=MyRoom/CN=thinkde.sb.com
+ 2 s:/C=PL/ST=Mazovia/L=Warsaw/O=MyHome/OU=MyRoom/CN=thinkde.sb.com
+   i:/C=PL/ST=Mazovia/L=Warsaw/O=MyHome/OU=MyRoom/CN=thinkde.sb.com
+---
+Server certificate
+-----BEGIN CERTIFICATE-----
+............
+```
