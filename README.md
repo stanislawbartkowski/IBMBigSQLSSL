@@ -65,6 +65,22 @@ Certificates requests found
 
 ```
 Send the *bigsql.csr* to the CA centre to be signed.<br>
+Two files should be received from CA centre.
+* CA root chain certificate (here ca-chain.cert.pem)
+* BigSQL server certificate signed by CA (here aa1.fyre.ibm.com.cert.pem)
+Add root CA and BigSQL signed certificates to the key dataabase. Pay attention to *receive* command for aadding BigSQL certficate, it matches the certificate with the proper SSL key.
+> gsk8capicmd_64 -cert -add -db bigsql.kdb -file /tmp/ca-chain.cert.pem -stashed<br>
+> gsk8capicmd_64 -cert -receive -db bigsql.kdb -file /tmp/aa1.fyre.ibm.com.cert.pem -stashed<br>
+<br>
+Verify the current content of key database.<br>
+> gsk8capicmd_64 -cert  -list  -db bigsql.kdb -stashed<br>
+```
+Certificates found
+* default, - personal, ! trusted, # secret key
+!	CN=thinkde.sb.com,OU=IntermediateRoom,O=MyHome,ST=Mazovia,C=PL
+!	CN=thinkde.sb.com,OU=MyRoom,O=MyHome,L=Warsaw,ST=Mazovia,C=PL
+-	bigsql
 
+```
 
 
