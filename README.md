@@ -8,8 +8,8 @@ https://www.ibm.com/support/knowledgecenter/SSCRJT_6.0.0/com.ibm.swg.im.bigsql.d
 More practical: https://developer.ibm.com/hadoop/2016/01/08/configure-big-sql-support-ssl/<br>
 
 Below I'm presenting a procedure which worked for me in several environments.
-## BigSQL server
-# Review the environment.
+# BigSQL server
+## Review the environment.
 The BigSQL secure connection can be configured using *bigsql* credentials. No need for *root* authority.<br>
 BigSQL SSL connection is implemented by means of IBM Global Security Kit (GSKit). Make sure that GSKit dependency is included in the *LD_LIBRARY_PATH*.<br>
 (as *bigsql* user)<br>
@@ -24,13 +24,13 @@ Find the *gsk8capicmd_64* utility and add to *PATH* variable.
 ```
 >export PATH=$PATH:/usr/ibmpacks/bigsql/6.0.0.0/db2/gskit/bin<br>
 
-# Create a directory where all SSL related files will reside
+## Create a directory where all SSL related files will reside
 Assuming /etc/bigsql/security directory.<br>
 > mkdir /etc/bigsql/security<br>
 
 There is no need for any other then *bigsql* to deal with this directory.<br>
 > chmod 700 /etc/bigsql/security<br>
-# Create a server key database
+## Create a server key database
 > cd /etc/bigsql/security/<br>
 > gsk8capicmd_64 -keydb -create -db bigsql.kdb -pw "secret" -stash<br>
 
@@ -42,7 +42,7 @@ rw------- 1 bigsql hadoop  88 Mar  9 12:00 bigsql.crl
 -rw------- 1 bigsql hadoop  88 Mar  9 12:00 bigsql.rdb
 -rw------- 1 bigsql hadoop 193 Mar  9 12:00 bigsql.sth
 ```
-# Create self-signed certificate
+## Create self-signed certificate
 > gsk8capicmd_64 -cert -create -label bigsql -db bigsql.kdb  -dn "CN=aa1.fyre.ibm.com"<br>
 
 *-dn* parameter is the certficate subject and can include more features. It is a good practice the have *CN* as the hostname where BigSQL Head node is installed.<br>
@@ -53,7 +53,7 @@ Certificates found
 * default, - personal, ! trusted, # secret key
 -	bigsql
 ```
-# Create a certificate signed by CA authority.
+## Create a certificate signed by CA authority.
 If more trusted connectivity is required then instead of self-signed certificate the CA signed certificate is necessary.<br>
 Create Certificate Signing Reqeust (csr). The same key database is used for certficates and CSR requests.<br>
 > gsk8capicmd_64 -certreq -create -dn "CN=aa1.fyre.ibm.com,O=myBIGSQL,OU=FYRE,L=H,ST=MZ,C=WAW" -db bigsql.kdb -label bigsql -file bigsql.csr -stashed<br>
