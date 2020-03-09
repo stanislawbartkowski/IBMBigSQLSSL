@@ -1,7 +1,10 @@
 # IBM BigSQL and SSL connection
 How to enable secure SSL connection between IBM BigSQL server and the client? Several usefull links:<br>
+
 https://www.ibm.com/support/knowledgecenter/SSEPGG_11.1.0/com.ibm.db2.luw.admin.sec.doc/doc/t0025241.html<br>
+
 https://www.ibm.com/support/knowledgecenter/SSCRJT_6.0.0/com.ibm.swg.im.bigsql.doc/doc/bi_admin_biga_ssl.html<br>
+
 More practical: https://developer.ibm.com/hadoop/2016/01/08/configure-big-sql-support-ssl/<br>
 
 Below I'm presenting a procedure which worked for me in several environments.
@@ -102,6 +105,7 @@ Only SSL connection available, disable non-secure.
 ## Restart BigSQL 
 > bigsql stop<br>
 > bigsql start<br>
+
 Verify that BigSQL secure port is enabled<br>
 ```
 > openssl s_client -connect aa1.fyre.ibm.com:32052<br>
