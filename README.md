@@ -143,12 +143,14 @@ Launch *jsqsh*<br>
 > jsqsh<br>
 > 1> \connect -Ubigsql -Pbigsql -S aa1.fyre.ibm.com -p 32052 -ddb2 -Dbigsql -O sslConnection=true -O sslTrustStoreLocation=/home/bigsql/server.jks -O sslTrustStorePassword=secret<br>
 <br>
-* -Ubigsql The BigSQL user used to conect
+
+* -Ubigsql The BigSQL user to connect
 * -Pbigsql The BigSQL user password
 * -S aa1.fyre.ibm.com BigSQL Head node hostname
 * -p 32052 The SSL secure port
-* -O sslTrustStoreLocation= The qualified pathname of  Java keystore file 
+* -O sslTrustStoreLocation= The qualified pathname of the Java keystore file 
 * -O sslTrustStorePassword= The password protecting Java keystore
 <br>
 Simple test that connection is active<br>
+
 >  1> select * from syscat.tables;
