@@ -74,6 +74,7 @@ Add root CA and BigSQL signed certificates to the key dataabase. Pay attention t
 <br>
 Verify the current content of key database.<br>
 > gsk8capicmd_64 -cert  -list  -db bigsql.kdb -stashed<br>
+
 ```
 Certificates found
 * default, - personal, ! trusted, # secret key
