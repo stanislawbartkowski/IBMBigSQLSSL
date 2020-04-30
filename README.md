@@ -71,6 +71,7 @@ Send the *bigsql.csr* to the CA centre to be signed.<br>
 Two files should be received from CA centre.
 * CA root chain certificate (here ca-chain.cert.pem)
 * BigSQL server certificate signed by CA (here aa1.fyre.ibm.com.cert.pem)
+
 Add root CA and BigSQL signed certificates to the key dataabase. Pay attention to *receive* command for aadding BigSQL certficate, it matches the certificate with the proper SSL key.
 > gsk8capicmd_64 -cert -add -db bigsql.kdb -file /tmp/ca-chain.cert.pem -stashed<br>
 > gsk8capicmd_64 -cert -receive -db bigsql.kdb -file /tmp/aa1.fyre.ibm.com.cert.pem -stashed<br>
