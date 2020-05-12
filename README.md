@@ -114,7 +114,7 @@ Only SSL connection available, disable non-secure.
 
 Verify that BigSQL secure port is enabled<br>
 ```
-> openssl s_client -connect aa1.fyre.ibm.com:32052<br>
+> openssl s_client -connect aa1.fyre.ibm.com:32052
 ```sh
 CONNECTED(00000003)
 depth=2 C = PL, ST = Mazovia, L = Warsaw, O = MyHome, OU = MyRoom, CN = thinkde.sb.com
