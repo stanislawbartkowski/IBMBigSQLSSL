@@ -104,6 +104,7 @@ Several remarks
 * Decide on secure port connection, here 32502. Avoid using standard SSL ports like 8443, 443 etc.
 
 Enable SSL<br>
+
 Keep both, secure and non-secure connections active.
 > db2set DB2COMM=SSL,TCPIP<br>
 
