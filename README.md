@@ -115,7 +115,8 @@ Only SSL connection available, disable non-secure.
 > bigsql start<br>
 
 Verify that BigSQL secure port is enabled<br>
-```
+
+
 > openssl s_client -connect aa1.fyre.ibm.com:32052
 ```
 CONNECTED(00000003)
