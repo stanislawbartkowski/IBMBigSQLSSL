@@ -102,6 +102,7 @@ Distribute *bigsql.kdb* and *bigsql.sth* across BigSQL Worker nodes<br>
 Several remarks
 * Use full path names for key database and stash files.
 * Decide on secure port connection, here 32502. Avoid using standard SSL ports like 8443, 443 etc.
+
 Enable SSL<br>
 Keep both, secure and non-secure connections active.
 > db2set DB2COMM=SSL,TCPIP<br>
