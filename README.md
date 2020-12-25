@@ -54,7 +54,7 @@ Certificates found
 -	bigsql
 ```
 ## Create a certificate signed by CA authority.
-If more trusted connectivity is required then instead of self-signed certificate the CA signed certificate is necessary.<br>
+For more trusted environment, user certificates signed by CA authority.<br>
 Create Certificate Signing Reqeust (csr). The same key database is used for certficates and CSR requests.<br>
 > gsk8capicmd_64 -certreq -create -dn "CN=aa1.fyre.ibm.com,O=myBIGSQL,OU=FYRE,L=H,ST=MZ,C=WAW" -db bigsql.kdb -label bigsql -file bigsql.csr -stashed<br>
 
